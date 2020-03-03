@@ -53,4 +53,18 @@ rocketship.y = display.contentHeight/2
 -- flip the image horizontally
 rocketship:scale (-1, 1)
 
--- function: MoveShip
+-- function: MoveRocketShip
+-- Input: This function accepts an event listener 
+-- Output: none
+-- Description: This function adds the scroll speed to the x-value 
+-- of the ship
+local function MoveRocketShip(event)
+	--add the scroll speed to the x-value of the ship
+	rocketship.x = rocketship.x - scrollSpeed
+	-- change the transparency of the ship every time it moves
+	-- so that it fades out 
+	rocketship.alpha = rocketship.alpha - 0.0000000001
+end
+
+-- MoveShip will be called over and over again
+Runtime:addEventListener("enterFrame", MoveRocketShip)
