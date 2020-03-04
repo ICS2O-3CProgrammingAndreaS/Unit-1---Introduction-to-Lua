@@ -12,7 +12,7 @@ display.setStatusBar(display.HiddenStatusBar)
 scrollSpeed = 3 
 
 -- background image with width and height
-local backgroundImage = display.newImageRect("Images/background.png", 2048, 1536)
+local backgroundImage = display.newImageRect("Images/background.png", 3000, 1732)
 
 -- character image with width and height
 local beetleship = display.newImageRect("Images/beetleship.png", 200, 200)
@@ -53,4 +53,20 @@ rocketship.y = display.contentHeight/2
 -- flip the image horizontally
 rocketship:scale (-1, 1)
 
--- function: MoveShip
+-- function: MoveRocketShip
+-- Input; This function accepts an event lister
+-- Output: none
+-- Description: This function adds the scroll speed to the x-value 
+-- of the rocketship
+local function MoveShip(event)
+	--add the scroll speed to the x-value of the ship
+	rocketship.x = rocketship.x - scrollSpeed
+	-- change the transparency of the ship every time it moves
+	-- so that it fades out 
+	rocketship.alpha = rocketship.alpha - 0.01
+end
+
+-- MoveShip will be called over and over again
+Runtime:addEventListener("enterFrame", MoveShip)
+
+
