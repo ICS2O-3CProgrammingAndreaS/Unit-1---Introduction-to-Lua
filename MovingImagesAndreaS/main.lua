@@ -57,8 +57,9 @@ rocketship:scale (-1, 1)
 -- Input; This function accepts an event lister
 -- Output: none
 -- Description: This function adds the scroll speed to the x-value 
--- of the rocketship
-local function MoveShip(event)
+-- of the rocketshio
+
+local function MoveRocketShip(event)
 	--add the scroll speed to the x-value of the ship
 	rocketship.x = rocketship.x - scrollSpeed
 	-- change the transparency of the ship every time it moves
@@ -68,5 +69,7 @@ end
 
 -- MoveShip will be called over and over again
 Runtime:addEventListener("enterFrame", MoveShip)
+	rocketship.alpha = rocketship.alpha - 0.0000000001
 
-
+-- MoveShip will be called over and over again
+Runtime:addEventListener("enterFrame", MoveRocketShip)
