@@ -69,7 +69,7 @@ end
 
 -- MoveShip will be called over and over again
 Runtime:addEventListener("enterFrame", MoveShip)
-	rocketship.alpha = rocketship.alpha - 0.0000000001
+	rocketship.alpha = rocketship.alpha - 0.00000000001
 
 -- MoveShip will be called over and over again
 Runtime:addEventListener("enterFrame", MoveRocketShip)
