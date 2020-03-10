@@ -33,8 +33,15 @@ local function AskQuestion()
 	randomNumber1 = math.random(0, 10)
 	randomNumber2 = math.random(0, 10)
 
+	correctAnswer = randomNumber1 + randomNumber2
+
 	correctAnswer = randomNumber1 .. " + " .. randomNumber2 .. " = "
 
+end
+
+local function HideCorrect()
+	correctObject.isVisible = false
+	AskQuestion()
 end
 
 local function NumbericFieldListener( event )
@@ -42,14 +49,12 @@ local function NumbericFieldListener( event )
 	-- User beings editing "numbericField"
 	if ( event.phase == "began" ) then
 
-
 		-- clear text field
 		event.target.text = ""
 
 	elseif event.phase == "submitted" then
 
-		-- when the answer is submitted (enter key is pressed) set user's
-		-- input to users answer
+		-- when the answer is submitted (enter key is pressed) set user's input to users answer
 		userAnswer = tonumber(event.target.text)
 
 		--if the users answer and the correct answer are ths same:
