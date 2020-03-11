@@ -31,11 +31,8 @@ local triangleText
 local polygonText
 local polygon2Text
 local polygon3Text
-local triangleName = "Triangle"
-local PolygonName = "Polygon"
-local Polygon3Name = "Polygon3"
-local Polygon2Name = "Polygon2" 
-shapeTextSize = 30
+local shapeTextSize = 30
+
 local ombre = {
 	type = "gradient",
 	color1 = {  255/255, 0/255, 166/255 },
@@ -91,7 +88,7 @@ polygon:setStrokeColor(1, 1, 1)
 polygon2.strokeWidth = 20
 
 --set color of polygon2
-polygon2:setFillColor(gradient)
+polygon2:setFillColor(ombre)
 
 --Set color of border
 polygon2:setStrokeColor(1, 1, 1)
@@ -101,7 +98,7 @@ polygon2:setStrokeColor(1, 1, 1)
 polygon3.strokeWidth = 20
 
 --set color of polygon3
-polygon3:setFillColor(fade)
+polygon3:setFillColor(gradient)
 
 --Set color of border
 polygon3:setStrokeColor(1, 1, 1)
@@ -117,24 +114,45 @@ areaText = display.newText("The area of this triange, with a base of \n" ..
 --anchor the text and set its (x,y) position 
 areaText.anchorX = 0
 areaText.anchorY = 0
-areaText.x = 525
-areaText.y = 310
+areaText.x = 50
+areaText.y = 290
 
 --write the name of the triangle on the screen
-triangleText = display.newText(triangleName, 0, 0, Arial, shapeTextSize)
+triangleText = display.newText("Triangle", 0, 0, Arial, shapeTextSize)
 
 --anchor the text and set its (x,y) position 
 triangleText.anchorX = 0
 triangleText.anchorY = 0
 triangleText.x = 50
-triangleText.y = 40
+triangleText.y = 70
 
 --write the name of the polygon on the screen
 
-polygonText = display.newText(polygonName, 0, 0, Arial, shapeTextSize)
+polygonText = display.newText("Polygon 1", 0, 0, Arial, shapeTextSize)
+
+--anchor the text and set its (x,y) position 
+polygonText.anchorX = 0
+polygonText.anchorY = 0
+polygonText.x = 600
+polygonText.y = 70
+
+--write the name of the polygon on the screen
+
+polygonText = display.newText("Polygon 2", 0, 0, Arial, shapeTextSize)
 
 --anchor the text and set its (x,y) position 
 polygonText.anchorX = 0
 polygonText.anchorY = 0
 polygonText.x = 50
-polygonText.y = 40
+polygonText.y = 400
+
+--write the name of the polygon on the screen
+
+polygonText = display.newText("Polygon 3", 0, 0, Arial, shapeTextSize)
+
+--anchor the text and set its (x,y) position 
+polygonText.anchorX = 0
+polygonText.anchorY = 0
+polygonText.x = 750
+polygonText.y = 400
+
