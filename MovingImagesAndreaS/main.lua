@@ -17,6 +17,11 @@ local backgroundImage = display.newImageRect("Images/background.png", 3000, 1732
 -- character image with width and height
 local beetleship = display.newImageRect("Images/beetleship.png", 200, 200)
 
+local musicSound = audio.loadSound( "Sounds/backmusic" )
+local musicSoundChannel
+
+musicSoundChannel = audio.play(musicSoundChannel)
+
 -- set the image to be transparent 
 beetleship.alpha = 0
 
