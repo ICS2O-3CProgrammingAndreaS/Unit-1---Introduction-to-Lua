@@ -5,91 +5,116 @@
 
 ----
 
--- hide the status bar
+-- hide the statu bar
 display.setStatusBar(display.HiddenStatusBar)
 
--- sets the background colour
-display.setDefault("background", 124/255, 249/255, 199,255)
+-- set the default background
+display.setDefault("Background" 230/255, 145/255, 243/255)
 
-----
+
+-- 
 --local variables
-----
+--
+local qobject
+local cobject
+local NumericTextFields
+local randomnumber1
+local randomnumber2
+local userAns
+local cAns
+local incAns
+local randomOp
+local incobject
 
---create local variables
-local questionObject
-local correctObject
-local numberField 
-local randomNumber1
-local randomNumber2
-local userAnswer
-local correctAnswer
-
------
+--
 --local functions
------
+--
 
-local function AskQuestion()
-	-- generate 2 random numbers between a max. and a min. number
-	randomNumber1 = math.random(0, 10)
-	randomNumber2 = math.random(0, 10)
+local function askQuestion()
+	--generate a random number between 1 and 4
+	randomOp = math.random(1,4)
 
-	correctAnswer = randomNumber1 + randomNumber2
+	randomNumber1 = math.random(0,10)
+	randomnumber2 = math.random(0,10)
 
-	correctAnswer = randomNumber1 .. " + " .. randomNumber2 .. " = "
+	if (randomOp == 1) then
+		cAns = randomnumber1 + randomnumber2
 
-end
+		qobject.text = randomnumber1 .. " + " .. randomnumber2 .. " = "
 
-local function HideCorrect()
-	correctObject.isVisible = false
-	AskQuestion()
-end
+	elseif(randomOp == 2) then
+		cAns = randomnumber1 * randomnumber2
 
-local function NumbericFieldListener( event )
+		qobject.text = randomnumber1 .. " - " .. randomnumber2 .. " = "
 
-	-- User beings editing "numbericField"
-	if ( event.phase == "began" ) then
+	elseif (randomOp == 3)
+		cAns = randomnumber1 * randomnumber2
 
-		-- clear text field
-		event.target.text = ""
+		qobject.text = randomnumber1 .. " * " .. randomnumber2 .. " = ""
 
-	elseif event.phase == "submitted" then
+	elseif (rendomOp == 4) then
+		cAns = randomnumber1/randomnumber2
 
-		-- when the answer is submitted (enter key is pressed) set user's input to users answer
-		userAnswer = tonumber(event.target.text)
+		cAns = cans * 100
+		math.round(cAns)
 
-		--if the users answer and the correct answer are ths same:
-		if (userAnswer == correctAnswer) then
-			correctObject.isVisible = true
-			timer. performWithDelay(2000, HideCorrect)
-
-		end
+		qobject.text = randomnumber1 .. "/" .. randomnumber2 .. " = "
 	end
 end
 
----- 
--- Object Creation
-----
+local function HideCorrect ()
+	cobject.isVisible = false
+	askQuestion()
+end
 
--- displays a question and sets the colour 
-questionObject = display.newText( "", display.contentWidth/3, display.contentHeight/2, nil, 50 )
-questionObject:setTextColor(155/255, 42/255, 198/255)
+local function HideIncorrect ()
+	incobject.isVisible = false
+	askQuestion()
+end
 
--- create the correct text Object and make it invisible
-correctObject = display.newText( "Correct!", display.contentWidth/2, display.contentHeight*2/3, nil, 50)
-correctObject:setTextColor(155/255, 42/255, 198/255)
-correctObject.isVisible = false
+local function NumericFieldListener( event )
+	if (event.phase == "began" ) then
 
--- create numeric field
-numbericField = native.newTextField( display.contentWidth/2, display.contentHeight/2, 150, 80)
-numbericField.inputType = "number"
+		event.target.text = ""
 
--- add the event listener for the number field
-numbericField:addEventListener(" userInput", NumbericFieldListener )
+	elseif (event.phase == "submitted") then
 
-----
---function calls
-----
+		userAns = tonumber(event.target.text)
 
--- call the function to ask the question
-AskQuestion()
+		if (userAns == cAns) then 
+			cobject.isVisible = true
+			timer.performWithdelay(3000, HideCorrect)
+			correctSoundChannel = audio.play(correctSoundChannel)
+
+		else
+			incobject.isVisible = trie
+			timer.performWithdelay(3000, HideIncorrect)
+			incorrectSoundChannel = audio.play(IncorrectSoundChannel)
+		end
+
+		event.target.text = ""
+	end
+end
+
+-- 
+--object creation
+-- 
+
+qobject = display.newText ( "", display.contentWdith/2, display.contentHeight/2 nil, 70)
+qobject:setTextColor(214/255, 185/255, 15/255)
+
+cobject = display.newText ( "correct!", display.contentWdith/2, display.contentHeight*1/3, nil, 50)
+cobject:setTextColor(214/255, 185/255, 15/255)
+cobject.isVisible = false
+
+
+incobject = display.newText ( "Incorrect!", display.contentWdith/2, display.contentHeight*1/3, nil, 50)
+incobject:setTextColor(214/255, 185/255, 15/255)
+incobject.isVisible = false
+
+numericField = native.newTextField (display.contentHeight*2/3, display.contentWdith/2, 200, 100)
+numericField,inputType = "number"
+
+askQuestion()
+
 
