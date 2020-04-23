@@ -46,7 +46,8 @@ local secondsLeft = 10
 local clockText 
 local countDownTimer 
 local lives = 3 
-local totalSeconds2 = 12local randomNumberAddSub1
+local totalSeconds2 = 12
+local randomNumberAddSub1
 local randomNumberAddSub2
 local randomNumberMult1
 local randomNumberMult2 
