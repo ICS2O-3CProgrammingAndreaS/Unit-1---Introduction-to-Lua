@@ -1,7 +1,7 @@
 
 -----------------------------------------------------------------------------------------
 -- Title: PhysicsAndCollisions
--- Name: Ina
+-- Name: Andrea
 -- Course: ICS2O
 -- This program displays objects that fall and collide with the ground.
 -----------------------------------------------------------------------------------------
