@@ -78,3 +78,29 @@ Runtime:addEventListener("enterFrame", MoveShip)
 
 -- MoveShip will be called over and over again
 Runtime:addEventListener("enterFrame", MoveRocketShip)
+
+
+local counter = 0
+function zoom()
+	counter = counter + 1
+
+	if counter == 300 then
+		zoomIn(kanye3)
+	elseif counter == 600 then
+		counter = counter - 600
+		zoomOut(kanye3)
+	end
+end
+
+function zoomIn(kanye3)
+	print("zoomIn")
+	transition.to(kanye3, {xScale = 3, yScale = 3})
+end
+
+function zoomOut(kanye3)
+	print("zoomOut")
+	transition.to(kanye3, {xScale = 40, yScale = 30})
+end
+
+
+Runtime:addEventListener("enterFrame", zoom)
